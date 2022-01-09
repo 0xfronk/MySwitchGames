@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AutoSearchBar } from "./AutoSearchBar";
 
 export const GameForm = () => {
   const [title, setTitle] = useState("");
@@ -10,28 +11,25 @@ export const GameForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("inside handlesumbit");
+    setTitle("");
+    setStatus("Completed");
+    setFormHours("");
+    setReplayability("High");
+    setRating("");
   };
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-zinc-800 h-auto max-w-xl rounded-lg overflow-scroll flex flex-col px-8 py-8 text-neutral-50 justify-center"
+      className="bg-background-1000 h-auto max-w-xl rounded-lg overflow-scroll flex flex-col px-8 py-8 text-neutral-50 justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 md:w-fit"
     >
       <div>
-        <label className="block mb-0.5 font-semibold">Title</label>
-        <input
-          type="text"
-          required
-          value={title}
-          className="rounded-sm bg-background-1000 mb-3 px-2 py-1  w-full"
-          placeholder="Game name"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <div class="grid grid-cols-2 gap-3">
+        <AutoSearchBar title={title} setTitle={setTitle} />
+        <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="block mb-0.5 font-semibold">Status</label>
             <select
               onChange={(e) => setStatus(e.target.value)}
-              className="rounded-sm bg-background-1000 mb-3 px-2 py-1  w-full"
+              className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
             >
               <option value="Completed">Completed</option>
               <option value="Playing">Playing</option>
@@ -45,7 +43,7 @@ export const GameForm = () => {
               pattern="^[0-9]{0,6}$"
               value={formHours}
               placeholder="In-game hours"
-              className="rounded-sm bg-background-1000 mb-3 px-2 py-1 w-full"
+              className="rounded-sm bg-background-950 mb-3 px-2 py-1 w-full"
               onChange={(e) => setFormHours(e.target.value)}
             />
           </div>
@@ -53,7 +51,7 @@ export const GameForm = () => {
             <label className="block mb-0.5 font-semibold">Replayability</label>
             <select
               onChange={(e) => setReplayability(e.target.value)}
-              className="rounded-sm bg-background-1000 mb-3 px-2 py-1  w-full"
+              className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
             >
               <option value="High">High</option>
               <option value="Medium">Medium</option>
@@ -66,7 +64,7 @@ export const GameForm = () => {
               pattern="^\d{0,1}(?:\.\d)?$"
               value={rating}
               placeholder="Score out of 10"
-              className="rounded-sm bg-background-1000 mb-3 px-2 py-1  w-full"
+              className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
               onChange={(e) => setRating(e.target.value)}
             />
           </div>
