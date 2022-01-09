@@ -6,7 +6,7 @@ import { Navbar } from "./components/Navbar";
 function App() {
   const { userAuth } = useContext(AuthContext);
   const isReady = userAuth.isReady;
-  return <div className="App">{isReady && <Navbar />}</div>;
+  return <div className="App font-Raleway">{isReady && <Navbar />}</div>;
 }
 
 export default App;

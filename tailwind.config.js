@@ -2,6 +2,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        Raleway: ["Raleway", "sans-serif"],
+      },
       colors: {
         background: {
           100: "#3e3e3e",
