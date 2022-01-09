@@ -19,7 +19,7 @@ export const useLogout = () => {
 
     signOut(auth)
       .then(() => {
-        setUserAuth({ ...userAuth, state: null });
+        setUserAuth({ ...userAuth, curr_user: null });
 
         if (!isInterrupted) {
           setErrorMsg(null);

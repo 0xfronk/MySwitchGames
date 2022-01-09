@@ -5,6 +5,12 @@ module.exports = {
       fontFamily: {
         Raleway: ["Raleway", "sans-serif"],
       },
+      width: {
+        game: "13.5rem",
+      },
+      height: {
+        game: "22.5rem",
+      },
       colors: {
         background: {
           100: "#3e3e3e",

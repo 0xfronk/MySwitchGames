@@ -21,7 +21,7 @@ export const useLogin = () => {
     signInWithPopup(auth, provider)
       .then((res) => {
         const user = res.user;
-        setUserAuth({ ...userAuth, state: user });
+        setUserAuth({ ...userAuth, curr_user: user });
 
         if (!isInterrupted) {
           setErrorMsg(null);

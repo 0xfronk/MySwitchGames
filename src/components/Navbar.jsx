@@ -12,7 +12,7 @@ export const Navbar = () => {
   return (
     <nav className="w-full h-20 bg-background-900 flex justify-between items-center">
       <h1 className="text-neutral-50 font-bold text-3xl">MySwitchGames</h1>
-      {!userAuth.state && (
+      {!userAuth.curr_user && (
         <>
           <button
             onClick={login}
@@ -23,7 +23,7 @@ export const Navbar = () => {
           </button>
         </>
       )}
-      {userAuth.state && (
+      {userAuth.curr_user && (
         <>
           <button
             onClick={logout}

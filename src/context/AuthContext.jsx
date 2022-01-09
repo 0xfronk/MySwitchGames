@@ -5,10 +5,10 @@ import { auth } from "../firebase/config";
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [userAuth, setUserAuth] = useState({ state: null, isReady: false });
+  const [userAuth, setUserAuth] = useState({ curr_user: null, isReady: false });
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
-      setUserAuth({ state: user, isReady: true });
+      setUserAuth({ curr_user: user, isReady: true });
       unsub();
     });
   }, []);
