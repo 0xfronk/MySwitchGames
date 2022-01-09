@@ -15,6 +15,7 @@ module.exports = {
         background: {
           100: "#3e3e3e",
           900: "#323232",
+          1000: "#313131",
         },
         buttonbg: {
           900: "#6969DE",

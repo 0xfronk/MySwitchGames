@@ -7,7 +7,7 @@ export const GameCard = ({
   hours,
 }) => {
   return (
-    <div className="rounded-lg relative mb-5">
+    <div className="rounded-lg relative mb-5 inline-block">
       <img
         src={img_url}
         alt="Game cover"
