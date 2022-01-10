@@ -1,3 +1,6 @@
+import { db } from "../firebase/config";
+import { doc, updateDoc } from "firebase/firestore";
+
 export const GameCard = ({
   title,
   status,
@@ -5,9 +8,30 @@ export const GameCard = ({
   rating,
   img_url,
   hours,
+  existingGames,
+  setGames,
+  documentID,
 }) => {
+  const handleGameDelete = async () => {
+    const resultingGames = existingGames.filter((game) => {
+      return game.title !== title;
+    });
+    await updateDoc(doc(db, "game_list", `${documentID}`), {
+      game_objs: resultingGames,
+    });
+    setGames(resultingGames);
+  };
+
   return (
-    <div className="rounded-lg h-game w-game relative mb-5 inline-block">
+    <div className="rounded-lg h-game w-game relative mb-5 inline-block game-card">
+      <div className="bg-zinc-700 bg-opacity-70 absolute h-10 w-full z-100 rounded-t-lg delete-card hidden">
+        <p
+          className="text-red-500 absolute top-2 right-3 cursor-pointer"
+          onClick={handleGameDelete}
+        >
+          Remove
+        </p>
+      </div>
       <img
         src={img_url}
         alt="Game cover"

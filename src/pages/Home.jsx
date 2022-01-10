@@ -55,7 +55,15 @@ export const Home = () => {
       />
       <div className="custom-grid">
         {games.map((game) => {
-          return <GameCard key={uuidv4()} {...game}></GameCard>;
+          return (
+            <GameCard
+              key={uuidv4()}
+              {...game}
+              existingGames={games}
+              setGames={setGames}
+              documentID={documentID}
+            ></GameCard>
+          );
         })}
       </div>
       {formToggle && (
