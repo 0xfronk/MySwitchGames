@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 import { useLogout } from "../hooks/useLogout";
 import { AuthContext } from "../context/AuthContext";
@@ -25,12 +26,14 @@ export const Navbar = () => {
       )}
       {userAuth.curr_user && (
         <>
-          <button
-            onClick={logout}
-            className="bg-buttonbg-900 text-neutral-50 px-8 h-12 font-medium rounded-md flex justify-center items-center"
-          >
-            Sign Out
-          </button>
+          <Link to="/">
+            <button
+              onClick={logout}
+              className="bg-buttonbg-900 text-neutral-50 px-8 h-12 font-medium rounded-md flex justify-center items-center"
+            >
+              Sign Out
+            </button>
+          </Link>
         </>
       )}
     </nav>
