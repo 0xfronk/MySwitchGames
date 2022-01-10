@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { AutoSearchBar } from "./AutoSearchBar";
+import { gameData } from "../data/games";
 
-export const GameForm = () => {
+export const GameForm = ({ existingGames }) => {
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState("Completed");
   const [formHours, setFormHours] = useState("");
@@ -10,7 +11,21 @@ export const GameForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("inside handlesumbit");
+
+    const gameSubmitObj = gameData.filter((game) => {
+      return game.title === title;
+    })[0];
+
+    const pushData = {
+      genre: gameSubmitObj.genre,
+      hours: formHours,
+      img_url: gameSubmitObj.img_url,
+      rating: rating,
+      replayability: replayability,
+      status: status,
+      title: title,
+    };
+
     setTitle("");
     setStatus("Completed");
     setFormHours("");

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { MdOutlineClose } from "react-icons/md";
 import { gameData } from "../data/games";
+import { v4 as uuidv4 } from "uuid";
+
 export const AutoSearchBar = ({ title, setTitle }) => {
   const [searchFilteredData, setSearchFilteredData] = useState([]);
 
@@ -44,10 +46,11 @@ export const AutoSearchBar = ({ title, setTitle }) => {
         )}
       </div>
       {searchFilteredData.length > 0 && (
-        <div className="h-24 w-full overflow-auto z-100 bg-background-1100 rounded-b-sm">
-          {searchFilteredData.slice(0, 10).map((game) => {
+        <div className="h-24! search-data-width z-100 bg-background-1100 rounded-b-sm fixed">
+          {searchFilteredData.slice(0, 5).map((game) => {
             return (
               <div
+                key={uuidv4()}
                 className="h-8 flex items-center px-2 py-1 hover:bg-green-600 cursor-pointer overflow-y-scroll"
                 onClick={() => {
                   setTitle(game.title);

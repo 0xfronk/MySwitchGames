@@ -53,7 +53,7 @@ export const Home = () => {
           onClick={() => setFormToggle(false)}
         ></div>
       )}
-      {formToggle && <GameForm />}
+      {formToggle && <GameForm existingGames={games} />}
     </div>
   );
 };
