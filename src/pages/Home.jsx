@@ -68,7 +68,7 @@ export const Home = () => {
         })}
       </div>
       <h1 className="text-neutral-50 text-center text-3xl mb-5 mt-5 font-bold">
-        Statistics
+        Games by Genre
       </h1>
       <div className="w-4/5 xs:w-9/12 md:w-4/5 max-w-7xl m-auto flex justify-center pb-5">
         <Donut games={games} />
