@@ -89,7 +89,7 @@ export const GameForm = ({
               required
               pattern="\d{0,1}(?:\.\d)|10?$"
               value={rating}
-              placeholder="Score out of 10"
+              placeholder="Score with decimal/10"
               className="rounded-sm bg-background-950 mb-3 px-2 py-1 w-full focus:outline-none "
               onChange={(e) => setRating(e.target.value)}
             />

@@ -4,8 +4,9 @@ import { Navbar } from "../components/Navbar";
 import { GameListHeader } from "../components/GameListHeader";
 import { GameForm } from "../components/GameForm";
 import { GameCard } from "../components/GameCard";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { Donut } from "../components/Donut";
 import { db } from "../firebase/config";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
@@ -65,6 +66,12 @@ export const Home = () => {
             ></GameCard>
           );
         })}
+      </div>
+      <h1 className="text-neutral-50 text-center text-3xl mb-5 mt-5 font-bold">
+        Statistics
+      </h1>
+      <div className="w-4/5 xs:w-9/12 md:w-4/5 max-w-7xl m-auto flex justify-center pb-5">
+        <Donut games={games} />
       </div>
       {formToggle && (
         <div
