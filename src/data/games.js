@@ -1,4 +1,4 @@
-export const games = [
+export const gameData = [
   {
     title: "Pokemon: Brilliant Diamond",
     img_url:

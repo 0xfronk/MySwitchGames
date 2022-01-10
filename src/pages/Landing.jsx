@@ -11,6 +11,7 @@ export const Landing = () => {
         with others
       </p>
       <button
+        type="button"
         onClick={login}
         className="bg-green-500 text-neutral-50 px-8 h-12 font-medium rounded-md flex justify-center items-center"
       >

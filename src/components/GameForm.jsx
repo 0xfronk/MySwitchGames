@@ -43,7 +43,7 @@ export const GameForm = () => {
               pattern="^[0-9]{0,6}$"
               value={formHours}
               placeholder="In-game hours"
-              className="rounded-sm bg-background-950 mb-3 px-2 py-1 w-full"
+              className="rounded-sm bg-background-950 mb-3 px-2 py-1 w-full focus:outline-none "
               onChange={(e) => setFormHours(e.target.value)}
             />
           </div>
@@ -64,7 +64,7 @@ export const GameForm = () => {
               pattern="^\d{0,1}(?:\.\d)?$"
               value={rating}
               placeholder="Score out of 10"
-              className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
+              className="rounded-sm bg-background-950 mb-3 px-2 py-1 w-full focus:outline-none "
               onChange={(e) => setRating(e.target.value)}
             />
           </div>
