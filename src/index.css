@@ -6,3 +6,32 @@
 .search-data-width {
   width: 85.6%;
 }
+
+.custom-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 14.85rem);
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 1536px) {
+  .custom-grid {
+    grid-template-columns: repeat(4, 14.85rem);
+  }
+}
+
+@media only screen and (max-width: 1248px) {
+  .custom-grid {
+    grid-template-columns: repeat(3, 14.85rem);
+  }
+}
+
+@media only screen and (max-width: 931px) {
+  .custom-grid {
+    grid-template-columns: repeat(2, 14.85rem);
+  }
+}
+@media only screen and (max-width: 600px) {
+  .custom-grid {
+    grid-template-columns: repeat(1, 14.85rem);
+  }
+}

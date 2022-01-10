@@ -23,10 +23,10 @@ export const useLogin = () => {
       .then(async (res) => {
         const user = res.user;
         if (user.metadata.creationTime === user.metadata.lastSignInTime) {
-          console.log("NEW USER DETECTED");
           await addDoc(collection(db, "game_list"), {
             game_objs: [],
             user_id: user.uid,
+            username: "",
           });
         }
         setUserAuth({ ...userAuth, curr_user: user });

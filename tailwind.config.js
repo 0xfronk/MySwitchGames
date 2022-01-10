@@ -6,10 +6,10 @@ module.exports = {
         Raleway: ["Raleway", "sans-serif"],
       },
       width: {
-        game: "13.5rem",
+        game: "14.85rem",
       },
       height: {
-        game: "22.5rem",
+        game: "24.75rem",
       },
       colors: {
         background: {

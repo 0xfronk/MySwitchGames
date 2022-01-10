@@ -1,21 +1,27 @@
 import { useState } from "react";
 import { AutoSearchBar } from "./AutoSearchBar";
 import { gameData } from "../data/games";
+import { db } from "../firebase/config";
+import { doc, updateDoc } from "firebase/firestore";
 
-export const GameForm = ({ existingGames }) => {
+export const GameForm = ({
+  existingGames,
+  documentID,
+  setGames,
+  setFormToggle,
+}) => {
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState("Completed");
   const [formHours, setFormHours] = useState("");
   const [replayability, setReplayability] = useState("High");
   const [rating, setRating] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const gameSubmitObj = gameData.filter((game) => {
       return game.title === title;
     })[0];
-
     const pushData = {
       genre: gameSubmitObj.genre,
       hours: formHours,
@@ -25,12 +31,17 @@ export const GameForm = ({ existingGames }) => {
       status: status,
       title: title,
     };
-
+    existingGames.push(pushData);
+    await updateDoc(doc(db, "game_list", `${documentID}`), {
+      game_objs: existingGames,
+    });
+    setGames(existingGames);
     setTitle("");
     setStatus("Completed");
     setFormHours("");
     setReplayability("High");
     setRating("");
+    setFormToggle(false);
   };
   return (
     <form
@@ -76,7 +87,7 @@ export const GameForm = ({ existingGames }) => {
             <input
               type="text"
               required
-              pattern="^\d{0,1}(?:\.\d)?$"
+              pattern="\d{0,1}(?:\.\d)|10?$"
               value={rating}
               placeholder="Score out of 10"
               className="rounded-sm bg-background-950 mb-3 px-2 py-1 w-full focus:outline-none "
