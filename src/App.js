@@ -3,6 +3,8 @@ import { AuthContext } from "./context/AuthContext";
 import { Landing } from "./pages/Landing";
 import { Home } from "./pages/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { userAuth } = useContext(AuthContext);
@@ -15,6 +17,18 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/gamelist/:id" element={<Home />} />
           </Routes>
+          <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
         </Router>
       )}
     </div>

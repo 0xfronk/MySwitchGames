@@ -39,3 +39,7 @@
 .game-card:hover .delete-card {
   display: block;
 }
+
+.toast-text {
+  padding-top: 0.1rem;
+}

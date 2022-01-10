@@ -3,6 +3,7 @@ import { AutoSearchBar } from "./AutoSearchBar";
 import { gameData } from "../data/games";
 import { db } from "../firebase/config";
 import { doc, updateDoc } from "firebase/firestore";
+import { Notify } from "../utilities/Notify";
 
 export const GameForm = ({
   existingGames,
@@ -18,30 +19,45 @@ export const GameForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const gameSubmitObj = gameData.filter((game) => {
-      return game.title === title;
-    })[0];
-    const pushData = {
-      genre: gameSubmitObj.genre,
-      hours: formHours,
-      img_url: gameSubmitObj.img_url,
-      rating: rating,
-      replayability: replayability,
-      status: status,
-      title: title,
-    };
-    existingGames.push(pushData);
-    await updateDoc(doc(db, "game_list", `${documentID}`), {
-      game_objs: existingGames,
-    });
-    setGames(existingGames);
-    setTitle("");
-    setStatus("Completed");
-    setFormHours("");
-    setReplayability("High");
-    setRating("");
-    setFormToggle(false);
+    let existFlag = false;
+    for (let i = 0; i < existingGames.length; i++) {
+      if (existingGames[i].title === title) {
+        existFlag = true;
+        Notify("This game already exists");
+        break;
+      }
+    }
+    if (!existFlag) {
+      const gameSubmitObj = gameData.filter((game) => {
+        return game.title === title;
+      })[0];
+      const pushData = {
+        genre: gameSubmitObj.genre,
+        hours: formHours,
+        img_url: gameSubmitObj.img_url,
+        rating: rating,
+        replayability: replayability,
+        status: status,
+        title: title,
+      };
+      existingGames.push(pushData);
+      await updateDoc(doc(db, "game_list", `${documentID}`), {
+        game_objs: existingGames,
+      });
+      setGames(existingGames);
+      setTitle("");
+      setStatus("Completed");
+      setFormHours("");
+      setReplayability("High");
+      setRating("");
+      setFormToggle(false);
+    } else {
+      setTitle("");
+      setStatus("Completed");
+      setFormHours("");
+      setReplayability("High");
+      setRating("");
+    }
   };
   return (
     <form
@@ -55,6 +71,7 @@ export const GameForm = ({
             <label className="block mb-0.5 font-semibold">Status</label>
             <select
               onChange={(e) => setStatus(e.target.value)}
+              value={status}
               className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
             >
               <option value="Completed">Completed</option>
@@ -77,6 +94,7 @@ export const GameForm = ({
             <label className="block mb-0.5 font-semibold">Replayability</label>
             <select
               onChange={(e) => setReplayability(e.target.value)}
+              value={replayability}
               className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
             >
               <option value="High">High</option>
@@ -87,9 +105,9 @@ export const GameForm = ({
             <input
               type="text"
               required
-              pattern="\d{0,1}(?:\.\d)|10?$"
+              pattern="\d{0,1}(?:\.\d)|10|\d?$"
               value={rating}
-              placeholder="Score with decimal/10"
+              placeholder="Score out of 10"
               className="rounded-sm bg-background-950 mb-3 px-2 py-1 w-full focus:outline-none "
               onChange={(e) => setRating(e.target.value)}
             />
