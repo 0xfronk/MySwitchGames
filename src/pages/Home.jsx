@@ -1,5 +1,4 @@
-import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar";
 import { GameListHeader } from "../components/GameListHeader";
 import { GameForm } from "../components/GameForm";
@@ -16,7 +15,6 @@ export const Home = () => {
   const [hours, setHours] = useState(0);
   const [formToggle, setFormToggle] = useState(false);
   const [documentID, setDocumentID] = useState([]);
-  const { userAuth } = useContext(AuthContext);
   const { id } = useParams();
 
   useEffect(() => {
@@ -26,7 +24,6 @@ export const Home = () => {
       collection(db, "game_list"),
       where("user_id", "==", `${id}`)
     );
-    console.log(userAuth.curr_user.uid);
     const unsub = onSnapshot(q, (qSnapshot) => {
       const game_list = [];
       const doc_id = [];
@@ -45,7 +42,7 @@ export const Home = () => {
       setGames(game_list[0].game_objs);
     });
     return () => unsub();
-  }, [id, userAuth.curr_user.uid]);
+  }, [id]);
   return (
     <div className="w-4/5 xs:w-9/12 md:w-4/5 max-w-7xl m-auto">
       <Navbar />
@@ -53,6 +50,7 @@ export const Home = () => {
         amount={amount}
         hours={hours}
         setFormToggle={setFormToggle}
+        id={id}
       />
       <div className="custom-grid">
         {games.map((game) => {

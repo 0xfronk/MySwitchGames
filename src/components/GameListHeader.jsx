@@ -1,6 +1,16 @@
 import { BsPlusSquareDotted } from "react-icons/bs";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-export const GameListHeader = ({ amount, hours, setFormToggle }) => {
+export const GameListHeader = ({ amount, hours, setFormToggle, id }) => {
+  const { userAuth } = useContext(AuthContext);
+  let browsing_id = "";
+  if (userAuth.curr_user === null) {
+    browsing_id = "guest";
+  } else {
+    browsing_id = userAuth.curr_user.uid;
+  }
+
   return (
     <div className="flex w-full justify-between mb-5 items-center text-neutral-50 text-lg">
       {amount === 1 ? (
@@ -14,12 +24,14 @@ export const GameListHeader = ({ amount, hours, setFormToggle }) => {
           <span className="font-bold"> {hours}</span> total hours in game
         </h3>
       )}
-      <BsPlusSquareDotted
-        className="cursor-pointer"
-        size={30}
-        fill={"#EEEEEE"}
-        onClick={() => setFormToggle(true)}
-      />
+      {browsing_id === id && (
+        <BsPlusSquareDotted
+          className="cursor-pointer"
+          size={30}
+          fill={"#EEEEEE"}
+          onClick={() => setFormToggle(true)}
+        />
+      )}
     </div>
   );
 };

@@ -12,9 +12,15 @@ export const Navbar = () => {
 
   return (
     <nav className="w-full h-20 bg-background-900 flex justify-between items-center">
-      <Link to={`/gamelist/${userAuth.curr_user.uid}`}>
-        <h1 className="text-neutral-50 font-bold text-3xl">MySwitchGames</h1>
-      </Link>
+      {userAuth.curr_user ? (
+        <Link to={`/gamelist/${userAuth.curr_user.uid}`}>
+          <h1 className="text-neutral-50 font-bold text-3xl">MySwitchGames</h1>
+        </Link>
+      ) : (
+        <Link to={"/"}>
+          <h1 className="text-neutral-50 font-bold text-3xl">MySwitchGames</h1>
+        </Link>
+      )}
       {!userAuth.curr_user && (
         <>
           <button
