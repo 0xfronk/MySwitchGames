@@ -19,7 +19,7 @@ export const GameListHeader = ({
   }
 
   return (
-    <div className="flex w-full mb-5 items-center text-neutral-50 text-md xs:text-lg">
+    <div className="flex w-full mb-5 items-center text-neutral-50 text-md xs:text-lg mr-1">
       {amount === 1 ? (
         <h3>
           <span className="font-bold">{amount}</span> game played &nbsp;{"   "}
