@@ -15,7 +15,6 @@ export const UsernameModal = ({ setUsernameFormToggle, documentID }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("INSIDE USERNAME FORM");
     const q = query(
       collection(db, "game_list"),
       where("username", "==", formUsername)
