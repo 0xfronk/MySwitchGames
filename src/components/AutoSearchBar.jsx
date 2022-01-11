@@ -46,12 +46,12 @@ export const AutoSearchBar = ({ title, setTitle }) => {
         )}
       </div>
       {searchFilteredData.length > 0 && (
-        <div className="h-24! search-data-width z-100 bg-background-1100 rounded-b-sm fixed">
+        <div className="h-24! search-data-width z-100 bg-background-1100 rounded-b-sm fixed overflow-y-scroll">
           {searchFilteredData.slice(0, 5).map((game) => {
             return (
               <div
                 key={uuidv4()}
-                className="h-8 flex items-center px-2 py-1 hover:bg-green-600 cursor-pointer overflow-y-scroll"
+                className="h-auto flex items-center px-2 py-1 hover:bg-green-600 cursor-pointer overflow-hidden break-all"
                 onClick={() => {
                   setTitle(game.title);
                   setSearchFilteredData([]);

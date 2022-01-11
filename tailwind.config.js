@@ -1,6 +1,16 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    screens: {
+      xxs: "360px",
+      xs: "520px",
+      sm: "640px",
+      md: "768px",
+      mdlg: "900px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
     extend: {
       fontFamily: {
         Raleway: ["Raleway", "sans-serif"],

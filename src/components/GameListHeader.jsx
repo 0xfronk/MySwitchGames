@@ -19,7 +19,7 @@ export const GameListHeader = ({
   }
 
   return (
-    <div className="flex w-full mb-5 items-center text-neutral-50 text-lg">
+    <div className="flex w-full mb-5 items-center text-neutral-50 text-md xs:text-lg">
       {amount === 1 ? (
         <h3>
           <span className="font-bold">{amount}</span> game played &nbsp;{"   "}
@@ -32,17 +32,15 @@ export const GameListHeader = ({
         </h3>
       )}
       {browsing_id === id && (
-        <div className="flex ml-auto items-center">
+        <div className="flex ml-auto items-center settings-icon">
           <AiOutlineSetting
             className="cursor-pointer mr-5"
-            size={33}
             fill={"#EEEEEE"}
             onClick={() => setUsernameFormToggle(true)}
           />
 
           <BsPlusSquareDotted
-            className="cursor-pointer"
-            size={30}
+            className="cursor-pointer add-icon"
             fill={"#EEEEEE"}
             onClick={() => setFormToggle(true)}
           />

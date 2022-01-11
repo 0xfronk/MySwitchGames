@@ -77,7 +77,7 @@ export const GameForm = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-background-1000 h-auto max-w-xl rounded-lg overflow-scroll flex flex-col px-8 py-8 text-neutral-50 justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 md:w-fit"
+      className="bg-background-1000 h-auto max-w-xl rounded-lg overflow-scroll flex flex-col px-4 py-4 xs:px-8 xs:py-8 text-neutral-50 justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10/12 xs:w-4/5 md:w-fit"
     >
       <div>
         <AutoSearchBar title={title} setTitle={setTitle} />

@@ -12,40 +12,38 @@ export const Navbar = () => {
   const { logout } = useLogout();
 
   return (
-    <nav className="w-full h-20 bg-background-900 flex justify-between items-center">
-      <div className="flex w-4/5">
-        {userAuth.curr_user ? (
-          <Link to={`/gamelist/${userAuth.curr_user.uid}`}>
-            <h1 className="text-neutral-50 font-bold text-3xl mr-8">
-              MySwitchGames
-            </h1>
-          </Link>
-        ) : (
-          <Link to={"/"}>
-            <h1 className="text-neutral-50 font-bold text-3xl mr-5">
-              MySwitchGames
-            </h1>
-          </Link>
-        )}
-        <UserSearchBar />
-      </div>
+    <nav className="w-full h-28 xs:h-32 mdlg:h-20 mdlg:pt-0 pt-2 bg-background-900 flex items-center flex-wrap">
+      {userAuth.curr_user ? (
+        <Link to={`/gamelist/${userAuth.curr_user.uid}`}>
+          <h1 className="text-neutral-50 font-bold text-2xl xs:text-3xl mdlg:mr-8 mr-3 order-1">
+            MySwitchGames
+          </h1>
+        </Link>
+      ) : (
+        <Link to={"/"}>
+          <h1 className="text-neutral-50 font-bold text-2xl xs:text-3xl  mdlg:mr-8 mr-3 order-1">
+            MySwitchGames
+          </h1>
+        </Link>
+      )}
+      <UserSearchBar />
       {!userAuth.curr_user && (
         <>
           <button
             onClick={login}
-            className="bg-buttonbg-900 text-neutral-50 px-8 h-12 font-medium rounded-md flex justify-center items-center"
+            className="bg-buttonbg-900 text-neutral-50 px-4 h-8 xxs:px-4 xxs:h-9 text-xs xs:text-base xs:px-8 xs:h-12 font-medium rounded-md flex justify-center items-center ml-auto md:order-2 order-1"
           >
-            <FaGoogle size={14} className="inline-block mr-3" />
+            <FaGoogle className="inline-block mr-3 google-icon" />
             Sign In
           </button>
         </>
       )}
       {userAuth.curr_user && (
         <>
-          <Link to="/">
+          <Link to="/" className="ml-auto md:order-2 order-1">
             <button
               onClick={logout}
-              className="bg-buttonbg-900 text-neutral-50 px-8 h-12 font-medium rounded-md flex justify-center items-center ml-auto"
+              className="bg-buttonbg-900 text-neutral-50 px-4 h-6 xxs:px-6 xxs:h-9  text-xs xs:text-base xs:px-8 xs:h-12 font-medium rounded-md flex justify-center items-center "
             >
               Sign Out
             </button>

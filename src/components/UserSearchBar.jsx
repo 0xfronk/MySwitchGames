@@ -27,9 +27,12 @@ export const UserSearchBar = () => {
     }
   };
   return (
-    <form onSubmit={searchHandler} className="w-2/5">
+    <form
+      onSubmit={searchHandler}
+      className="mdlg:w-2/5 md:1/3 mdlg:order-2 order-3 w-full"
+    >
       <input
-        className="bg-background-1100 text-neutral-50 h-10 w-full rounded-md text-md px-2"
+        className="bg-background-1100 text-neutral-50 h-10 w-full rounded-md text-md px-2 focus:outline-gray-500"
         placeholder="Search user by username"
         value={searchUser}
         onChange={(e) => setSearchUser(e.target.value)}
