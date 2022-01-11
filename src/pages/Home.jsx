@@ -4,6 +4,7 @@ import { GameListHeader } from "../components/GameListHeader";
 import { GameForm } from "../components/GameForm";
 import { GameCard } from "../components/GameCard";
 import { Donut } from "../components/Donut";
+import { UsernameModal } from "../components/UsernameModal";
 import { db } from "../firebase/config";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { useParams } from "react-router-dom";
@@ -14,7 +15,9 @@ export const Home = () => {
   const [amount, setAmount] = useState(0);
   const [hours, setHours] = useState(0);
   const [formToggle, setFormToggle] = useState(false);
+  const [usernameFormToggle, setUsernameFormToggle] = useState(false);
   const [documentID, setDocumentID] = useState([]);
+  const [username, setUsername] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -30,10 +33,11 @@ export const Home = () => {
       qSnapshot.forEach((doc) => {
         game_list.push(doc.data());
         doc_id.push(doc.id);
-        console.log("INSIDE SNAP");
       });
       setDocumentID(doc_id[0]);
       setAmount(game_list[0].game_objs.length);
+      setUsername(game_list[0].username);
+
       let game_hours = 0;
       game_list[0].game_objs.forEach(
         (game) => (game_hours += parseInt(game.hours))
@@ -46,11 +50,18 @@ export const Home = () => {
   return (
     <div className="w-4/5 xs:w-9/12 md:w-4/5 max-w-7xl m-auto">
       <Navbar />
+      {username !== "" && (
+        <h1 className="text-neutral-50 text-xl font-bold">
+          {username}'s Game List
+        </h1>
+      )}
       <GameListHeader
         amount={amount}
         hours={hours}
         setFormToggle={setFormToggle}
         id={id}
+        setUsernameFormToggle={setUsernameFormToggle}
+        documentID={documentID}
       />
       <div className="custom-grid">
         {games.map((game) => {
@@ -77,12 +88,24 @@ export const Home = () => {
           onClick={() => setFormToggle(false)}
         ></div>
       )}
+      {usernameFormToggle && (
+        <div
+          className="bg-neutral-900 opacity-80 h-screen w-screen fixed top-0 left-0 cursor-pointer"
+          onClick={() => setUsernameFormToggle(false)}
+        ></div>
+      )}
       {formToggle && (
         <GameForm
           existingGames={games}
           documentID={documentID}
           setGames={setGames}
           setFormToggle={setFormToggle}
+        />
+      )}
+      {usernameFormToggle && (
+        <UsernameModal
+          setUsernameFormToggle={setUsernameFormToggle}
+          documentID={documentID}
         />
       )}
     </div>
