@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 .search-data-width {
-  width: 85.6%;
+  width: calc(100% - 4rem);
 }
 
 .custom-grid {
