@@ -10,7 +10,6 @@ export const UserSearchBar = () => {
 
   const searchHandler = async (e) => {
     e.preventDefault();
-    console.log("HIIIIII");
     const q = query(
       collection(db, "game_list"),
       where("username", "==", searchUser)

@@ -24,9 +24,6 @@ export const useLogin = () => {
     signInWithPopup(auth, provider)
       .then(async (res) => {
         const user = res.user;
-        console.log(user.metadata.creationTime);
-        console.log(user.metadata.lastSignInTime);
-        console.log(user.uid);
 
         //2 minutes of delay with this method of detecting a new user is possible to alleviate database load so querying is needed
         if (user.metadata.creationTime === user.metadata.lastSignInTime) {
@@ -40,7 +37,6 @@ export const useLogin = () => {
             count += 1;
           });
           if (count === 0) {
-            console.log("NEW USER DETECTED");
             await addDoc(collection(db, "game_list"), {
               game_objs: [],
               user_id: user.uid,

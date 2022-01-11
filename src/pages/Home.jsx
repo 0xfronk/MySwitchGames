@@ -21,8 +21,6 @@ export const Home = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    console.log(id);
-    console.log("LOGGING GAMES");
     const q = query(
       collection(db, "game_list"),
       where("user_id", "==", `${id}`)
