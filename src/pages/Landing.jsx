@@ -8,30 +8,41 @@ export const Landing = () => {
   const { userAuth } = useContext(AuthContext);
 
   return (
-    <div>
-      <h1>Welcome to MySwitchGames</h1>
-      <p>
-        Track and rate your Nintendo Switch Games and share your list of games
-        with others
-      </p>
-      {userAuth.curr_user ? (
-        <Link to={`/gamelist/${userAuth.curr_user.uid}`}>
+    <>
+      <div className="background-image w-screen h-screen fixed"></div>
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-100 pb-2 text-neutral-50 text-center">
+        <h1 className="text-4xl font-bold mb-3">Welcome to MySwitchGames</h1>
+        <p className="text-xl text-neutral-100 mb-5">
+          Track and rate your Nintendo Switch Games and share your list of games
+          with others
+        </p>
+        <div className="flex w-full justify-center">
           <button
             type="button"
-            className="bg-buttonbg-900 text-neutral-50 px-8 h-12 font-medium rounded-md flex justify-center items-center"
+            className="bg-neutral-200 text-neutral-800 px-8 h-12 font-semibold rounded-md flex justify-center items-center mr-5"
           >
-            Get Started
+            View Demo
           </button>
-        </Link>
-      ) : (
-        <button
-          type="button"
-          onClick={login}
-          className="bg-buttonbg-900 text-neutral-50 px-8 h-12 font-medium rounded-md flex justify-center items-center"
-        >
-          Get Started
-        </button>
-      )}
-    </div>
+          {userAuth.curr_user ? (
+            <Link to={`/gamelist/${userAuth.curr_user.uid}`}>
+              <button
+                type="button"
+                className="bg-buttonbg-900 text-neutral-50 px-8 h-12 font-semibold rounded-md flex justify-center items-center"
+              >
+                Get Started
+              </button>
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={login}
+              className="bg-buttonbg-900 text-neutral-50 px-8 h-12 font-semibold rounded-md flex justify-center items-center"
+            >
+              Get Started
+            </button>
+          )}
+        </div>
+      </div>
+    </>
   );
 };

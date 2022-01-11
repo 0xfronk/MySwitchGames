@@ -72,6 +72,7 @@ export const Home = () => {
               existingGames={games}
               setGames={setGames}
               documentID={documentID}
+              id={id}
             ></GameCard>
           );
         })}

@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { db } from "../firebase/config";
 import { doc, updateDoc } from "firebase/firestore";
 
@@ -11,7 +13,15 @@ export const GameCard = ({
   existingGames,
   setGames,
   documentID,
+  id,
 }) => {
+  const { userAuth } = useContext(AuthContext);
+  let browsing_id = "";
+  if (userAuth.curr_user === null) {
+    browsing_id = "guest";
+  } else {
+    browsing_id = userAuth.curr_user.uid;
+  }
   const handleGameDelete = async () => {
     const resultingGames = existingGames.filter((game) => {
       return game.title !== title;
@@ -24,14 +34,16 @@ export const GameCard = ({
 
   return (
     <div className="rounded-lg h-game w-game relative mb-5 inline-block game-card">
-      <div className="bg-zinc-700 bg-opacity-70 absolute h-10 w-full z-100 rounded-t-lg delete-card hidden">
-        <p
-          className="text-red-500 absolute top-2 right-3 cursor-pointer"
-          onClick={handleGameDelete}
-        >
-          Remove
-        </p>
-      </div>
+      {browsing_id === id && (
+        <div className="bg-zinc-700 bg-opacity-70 absolute h-10 w-full z-100 rounded-t-lg delete-card hidden">
+          <p
+            className="text-red-500 absolute top-2 right-3 cursor-pointer"
+            onClick={handleGameDelete}
+          >
+            Remove
+          </p>
+        </div>
+      )}
       <img
         src={img_url}
         alt="Game cover"
