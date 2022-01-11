@@ -114,12 +114,6 @@ export const gameData = [
     genre: "Party",
   },
   {
-    title: "Cars 3: Driven to Win",
-    img_url:
-      "https://target.scene7.com/is/image/Target/GUEST_f3dd511d-4470-4fdf-9f83-d0ca6c9e5576",
-    genre: "Sports & racing",
-  },
-  {
     title: "Super Mario Party",
     img_url:
       "https://target.scene7.com/is/image/Target/GUEST_0c8a0d59-dd86-43f3-a98a-b0d6439972ab",

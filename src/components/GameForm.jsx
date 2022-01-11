@@ -20,6 +20,7 @@ export const GameForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     let existFlag = false;
+    let gameSubmitObj = {};
     for (let i = 0; i < existingGames.length; i++) {
       if (existingGames[i].title === title) {
         existFlag = true;
@@ -28,29 +29,43 @@ export const GameForm = ({
       }
     }
     if (!existFlag) {
-      const gameSubmitObj = gameData.filter((game) => {
-        return game.title === title;
-      })[0];
-      const pushData = {
-        genre: gameSubmitObj.genre,
-        hours: formHours,
-        img_url: gameSubmitObj.img_url,
-        rating: rating,
-        replayability: replayability,
-        status: status,
-        title: title,
-      };
-      existingGames.push(pushData);
-      await updateDoc(doc(db, "game_list", `${documentID}`), {
-        game_objs: existingGames,
-      });
-      setGames(existingGames);
-      setTitle("");
-      setStatus("Completed");
-      setFormHours("");
-      setReplayability("High");
-      setRating("");
-      setFormToggle(false);
+      let isGameFlag = false;
+      for (let i = 0; i < gameData.length; i++) {
+        if (gameData[i].title === title) {
+          isGameFlag = true;
+          gameSubmitObj = { ...gameData[i] };
+          break;
+        }
+      }
+      if (isGameFlag) {
+        const pushData = {
+          genre: gameSubmitObj.genre,
+          hours: formHours,
+          img_url: gameSubmitObj.img_url,
+          rating: rating,
+          replayability: replayability,
+          status: status,
+          title: title,
+        };
+        existingGames.push(pushData);
+        await updateDoc(doc(db, "game_list", `${documentID}`), {
+          game_objs: existingGames,
+        });
+        setGames(existingGames);
+        setTitle("");
+        setStatus("Completed");
+        setFormHours("");
+        setReplayability("High");
+        setRating("");
+        setFormToggle(false);
+      } else {
+        setTitle("");
+        setStatus("Completed");
+        setFormHours("");
+        setReplayability("High");
+        setRating("");
+        Notify("This game is not in our database");
+      }
     } else {
       setTitle("");
       setStatus("Completed");
