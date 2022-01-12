@@ -12,7 +12,7 @@ export const UserSearchBar = () => {
     e.preventDefault();
     const q = query(
       collection(db, "game_list"),
-      where("username", "==", searchUser)
+      where("username", "==", searchUser.toLowerCase())
     );
     const querySnapshot = await getDocs(q);
     const user_list = [];
