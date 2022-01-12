@@ -8,6 +8,7 @@ import { UsernameModal } from "../components/UsernameModal";
 import { db } from "../firebase/config";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 export const Home = () => {
@@ -19,6 +20,7 @@ export const Home = () => {
   const [documentID, setDocumentID] = useState([]);
   const [username, setUsername] = useState([]);
   const { id } = useParams();
+  const Navigate = useNavigate();
 
   useEffect(() => {
     const q = query(
@@ -32,19 +34,23 @@ export const Home = () => {
         game_list.push(doc.data());
         doc_id.push(doc.id);
       });
-      setDocumentID(doc_id[0]);
-      setAmount(game_list[0].game_objs.length);
-      setUsername(game_list[0].username);
+      if (game_list.length === 0) {
+        Navigate("/");
+      } else {
+        setDocumentID(doc_id[0]);
+        setAmount(game_list[0].game_objs.length);
+        setUsername(game_list[0].username);
 
-      let game_hours = 0;
-      game_list[0].game_objs.forEach(
-        (game) => (game_hours += parseInt(game.hours))
-      );
-      setHours(game_hours);
-      setGames(game_list[0].game_objs);
+        let game_hours = 0;
+        game_list[0].game_objs.forEach(
+          (game) => (game_hours += parseInt(game.hours))
+        );
+        setHours(game_hours);
+        setGames(game_list[0].game_objs);
+      }
     });
     return () => unsub();
-  }, [id]);
+  }, [id, Navigate]);
   return (
     <div className="w-10/12 xs:w-4/5 max-w-7xl m-auto">
       <Navbar />
@@ -75,12 +81,16 @@ export const Home = () => {
           );
         })}
       </div>
-      <h1 className="text-neutral-50 text-center text-3xl mb-5 mt-5 font-bold">
-        Games by Genre
-      </h1>
-      <div className="w-4/5 xs:w-9/12 md:w-4/5 max-w-7xl m-auto flex justify-center pb-5">
-        <Donut games={games} />
-      </div>
+      {games.length > 0 && (
+        <div>
+          <h1 className="text-neutral-50 text-center text-3xl mb-5 mt-5 font-bold">
+            Games by Genre
+          </h1>
+          <div className="w-4/5 xs:w-9/12 md:w-4/5 max-w-7xl m-auto flex justify-center pb-5">
+            <Donut games={games} />
+          </div>
+        </div>
+      )}
       {formToggle && (
         <div
           className="bg-neutral-900 opacity-80 h-screen w-screen fixed top-0 left-0 cursor-pointer"
