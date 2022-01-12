@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { Landing } from "./pages/Landing";
 import { Home } from "./pages/Home";
+import { Error } from "./pages/Error";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/gamelist/:id" element={<Home />} />
+            <Route path="*" element={<Error />} />
           </Routes>
           <ToastContainer
             position="top-center"
