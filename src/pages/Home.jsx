@@ -5,10 +5,12 @@ import { GameForm } from "../components/GameForm";
 import { GameCard } from "../components/GameCard";
 import { Donut } from "../components/Donut";
 import { UsernameModal } from "../components/UsernameModal";
+import spinner from "../assets/loading.svg";
 import { db } from "../firebase/config";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Notify } from "../utilities/Notify";
 import { v4 as uuidv4 } from "uuid";
 
 export const Home = () => {
@@ -19,10 +21,12 @@ export const Home = () => {
   const [usernameFormToggle, setUsernameFormToggle] = useState(false);
   const [documentID, setDocumentID] = useState([]);
   const [username, setUsername] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const Navigate = useNavigate();
 
   useEffect(() => {
+    setIsLoading(true);
     const q = query(
       collection(db, "game_list"),
       where("user_id", "==", `${id}`)
@@ -35,8 +39,10 @@ export const Home = () => {
         doc_id.push(doc.id);
       });
       if (game_list.length === 0) {
+        Notify("This user ID doesn't exist");
         Navigate("/");
       } else {
+        setIsLoading(false);
         setDocumentID(doc_id[0]);
         setAmount(game_list[0].game_objs.length);
         setUsername(game_list[0].username);
@@ -51,6 +57,15 @@ export const Home = () => {
     });
     return () => unsub();
   }, [id, Navigate]);
+  if (isLoading) {
+    return (
+      <img
+        src={spinner}
+        alt="Loading spinner"
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-24 w-24"
+      />
+    );
+  }
   return (
     <div className="w-10/12 xs:w-4/5 max-w-7xl m-auto">
       <Navbar />
