@@ -86,7 +86,7 @@ export const GameForm = ({
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="block mb-0.5 font-semibold">Status</label>
-            <div className="relative w-full -z-10">
+            <div className="relative w-full z-0">
               <span className="absolute right-2">
                 <i className="arrow-down"></i>
               </span>
@@ -114,7 +114,7 @@ export const GameForm = ({
           </div>
           <div>
             <label className="block mb-0.5 font-semibold">Replayability</label>
-            <div className="relative w-full -z-10">
+            <div className="relative w-full z-0">
               <span className="absolute right-2">
                 <i className="arrow-down"></i>
               </span>

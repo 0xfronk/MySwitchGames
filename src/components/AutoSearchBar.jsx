@@ -46,7 +46,7 @@ export const AutoSearchBar = ({ title, setTitle }) => {
         )}
       </div>
       {searchFilteredData.length > 0 && (
-        <div className="h-24! search-data-width z-100 bg-background-1100 rounded-b-sm fixed overflow-y-scroll">
+        <div className="h-24! search-data-width z-100 bg-background-1100 rounded-b-sm fixed overflow-y-scroll z-10">
           {searchFilteredData.slice(0, 5).map((game) => {
             return (
               <div
