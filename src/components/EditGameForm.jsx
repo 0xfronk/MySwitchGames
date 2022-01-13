@@ -44,7 +44,7 @@ export const EditGameForm = ({
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block mb-0.5 font-semibold">Status</label>
-                <div className="relative w-full">
+                <div className="relative w-full -z-10">
                   <span className="absolute right-2">
                     <i className="arrow-down"></i>
                   </span>
@@ -78,7 +78,7 @@ export const EditGameForm = ({
                 <label className="block mb-0.5 font-semibold">
                   Replayability
                 </label>
-                <div className="relative w-full">
+                <div className="relative w-full -z-10">
                   <span className="absolute right-2">
                     <i className="arrow-down"></i>
                   </span>
