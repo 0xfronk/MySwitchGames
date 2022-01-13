@@ -6,9 +6,9 @@ import { AuthContext } from "../context/AuthContext";
 export const GameListHeader = ({
   amount,
   hours,
-  setFormToggle,
+  setFormToggles,
+  formToggles,
   id,
-  setUsernameFormToggle,
 }) => {
   const { userAuth } = useContext(AuthContext);
   let browsing_id = "";
@@ -36,13 +36,15 @@ export const GameListHeader = ({
           <AiOutlineSetting
             className="cursor-pointer mr-5"
             fill={"#EEEEEE"}
-            onClick={() => setUsernameFormToggle(true)}
+            onClick={() =>
+              setFormToggles({ ...formToggles, usernameToggle: true })
+            }
           />
 
           <BsPlusSquareDotted
             className="cursor-pointer add-icon"
             fill={"#EEEEEE"}
-            onClick={() => setFormToggle(true)}
+            onClick={() => setFormToggles({ ...formToggles, addToggle: true })}
           />
         </div>
       )}

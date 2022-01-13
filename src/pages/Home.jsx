@@ -9,8 +9,7 @@ import { UsernameModal } from "../components/UsernameModal";
 import spinner from "../assets/loading.svg";
 import { db } from "../firebase/config";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Notify } from "../utilities/Notify";
 import { v4 as uuidv4 } from "uuid";
 
@@ -18,9 +17,11 @@ export const Home = () => {
   const [games, setGames] = useState([]);
   const [amount, setAmount] = useState(0);
   const [hours, setHours] = useState(0);
-  const [formToggle, setFormToggle] = useState(false);
-  const [editToggle, setEditToggle] = useState(false);
-  const [usernameFormToggle, setUsernameFormToggle] = useState(false);
+  const [formToggles, setFormToggles] = useState({
+    addToggle: false,
+    editToggle: false,
+    usernameToggle: false,
+  });
   const [documentID, setDocumentID] = useState([]);
   const [username, setUsername] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -81,9 +82,9 @@ export const Home = () => {
       <GameListHeader
         amount={amount}
         hours={hours}
-        setFormToggle={setFormToggle}
+        setFormToggles={setFormToggles}
+        formToggles={formToggles}
         id={id}
-        setUsernameFormToggle={setUsernameFormToggle}
         documentID={documentID}
       />
       <div className="custom-grid">
@@ -96,7 +97,8 @@ export const Home = () => {
               setGames={setGames}
               documentID={documentID}
               id={id}
-              setEditToggle={setEditToggle}
+              setFormToggles={setFormToggles}
+              formToggles={formToggles}
               setEditObj={setEditObj}
             ></GameCard>
           );
@@ -112,45 +114,50 @@ export const Home = () => {
           </div>
         </div>
       )}
-      {formToggle && (
+      {formToggles.addToggle && (
         <div
           className="bg-neutral-900 opacity-80 h-screen w-screen fixed top-0 left-0 cursor-pointer"
-          onClick={() => setFormToggle(false)}
+          onClick={() => setFormToggles({ ...formToggles, addToggle: false })}
         ></div>
       )}
-      {usernameFormToggle && (
+      {formToggles.usernameToggle && (
         <div
           className="bg-neutral-900 opacity-80 h-screen w-screen fixed top-0 left-0 cursor-pointer"
-          onClick={() => setUsernameFormToggle(false)}
+          onClick={() =>
+            setFormToggles({ ...formToggles, usernameToggle: false })
+          }
         ></div>
       )}
-      {editToggle && (
+      {formToggles.editToggle && (
         <div
           className="bg-neutral-900 opacity-80 h-screen w-screen fixed top-0 left-0 cursor-pointer !z-0"
-          onClick={() => setEditToggle(false)}
+          onClick={() => setFormToggles({ ...formToggles, editToggle: false })}
         ></div>
       )}
-      {editToggle && (
+      {formToggles.editToggle && (
         <EditGameForm
           editGameObj={editObj}
           existingGames={games}
           setGames={setGames}
           documentID={documentID}
-          setEditToggle={setEditToggle}
+          setFormToggles={setFormToggles}
+          formToggles={formToggles}
           setEditGameObj={setEditObj}
         />
       )}
-      {formToggle && (
+      {formToggles.addToggle && (
         <GameForm
           existingGames={games}
           documentID={documentID}
           setGames={setGames}
-          setFormToggle={setFormToggle}
+          setFormToggles={setFormToggles}
+          formToggles={formToggles}
         />
       )}
-      {usernameFormToggle && (
+      {formToggles.usernameToggle && (
         <UsernameModal
-          setUsernameFormToggle={setUsernameFormToggle}
+          setFormToggles={setFormToggles}
+          formToggles={formToggles}
           documentID={documentID}
         />
       )}

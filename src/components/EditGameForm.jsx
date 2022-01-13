@@ -8,7 +8,8 @@ export const EditGameForm = ({
   existingGames,
   setGames,
   documentID,
-  setEditToggle,
+  setFormToggles,
+  formToggles,
 }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ export const EditGameForm = ({
     });
     Notify("Game stats updated");
     setGames(existingGames);
-    setEditToggle(false);
+    setFormToggles({ ...formToggles, editToggle: false });
   };
   return (
     <>

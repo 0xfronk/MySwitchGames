@@ -9,7 +9,8 @@ export const GameCard = ({
   setGames,
   documentID,
   id,
-  setEditToggle,
+  setFormToggles,
+  formToggles,
   setEditObj,
 }) => {
   const { userAuth } = useContext(AuthContext);
@@ -30,7 +31,7 @@ export const GameCard = ({
   };
   const handleGameEdit = (currentGame) => {
     setEditObj({ ...currentGame });
-    setEditToggle(true);
+    setFormToggles({ ...formToggles, editToggle: true });
   };
 
   return (

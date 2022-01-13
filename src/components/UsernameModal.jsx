@@ -10,7 +10,7 @@ import {
 import { db } from "../firebase/config";
 import { Notify } from "../utilities/Notify";
 
-export const UsernameModal = ({ setUsernameFormToggle, documentID }) => {
+export const UsernameModal = ({ setFormToggles, formToggles, documentID }) => {
   const [formUsername, setFormUsername] = useState("");
 
   const handleSubmit = async (e) => {
@@ -29,7 +29,7 @@ export const UsernameModal = ({ setUsernameFormToggle, documentID }) => {
         username: formUsername,
       });
       Notify("Updated username");
-      setUsernameFormToggle(false);
+      setFormToggles({ ...formToggles, usernameToggle: false });
       setFormUsername("");
     } else {
       Notify("This username is taken");

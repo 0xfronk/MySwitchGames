@@ -15,7 +15,7 @@ export const Landing = () => {
           Welcome to MySwitchGames
         </h1>
         <p className="text-md xs:text-xl text-neutral-100 mb-5">
-          Track and rate your Nintendo Switch Games and share your list of games
+          Track and rate your Nintendo Switch games and share your list of games
           with others
         </p>
         <div className="flex w-full justify-center">

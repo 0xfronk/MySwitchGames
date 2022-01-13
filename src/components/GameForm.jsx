@@ -9,7 +9,8 @@ export const GameForm = ({
   existingGames,
   documentID,
   setGames,
-  setFormToggle,
+  setFormToggles,
+  formToggles,
 }) => {
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState("Completed");
@@ -52,12 +53,13 @@ export const GameForm = ({
           game_objs: existingGames,
         });
         setGames(existingGames);
+        Notify("Game added");
         setTitle("");
         setStatus("Completed");
         setFormHours("");
         setReplayability("High");
         setRating("");
-        setFormToggle(false);
+        setFormToggles({ ...formToggles, addToggle: false });
       } else {
         setTitle("");
         setStatus("Completed");
