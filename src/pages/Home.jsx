@@ -3,6 +3,7 @@ import { Navbar } from "../components/Navbar";
 import { GameListHeader } from "../components/GameListHeader";
 import { GameForm } from "../components/GameForm";
 import { GameCard } from "../components/GameCard";
+import { EditGameForm } from "../components/EditGameForm";
 import { Donut } from "../components/Donut";
 import { UsernameModal } from "../components/UsernameModal";
 import spinner from "../assets/loading.svg";
@@ -18,10 +19,13 @@ export const Home = () => {
   const [amount, setAmount] = useState(0);
   const [hours, setHours] = useState(0);
   const [formToggle, setFormToggle] = useState(false);
+  const [editToggle, setEditToggle] = useState(false);
   const [usernameFormToggle, setUsernameFormToggle] = useState(false);
   const [documentID, setDocumentID] = useState([]);
   const [username, setUsername] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [editObj, setEditObj] = useState({});
+
   const { id } = useParams();
   const Navigate = useNavigate();
 
@@ -87,11 +91,13 @@ export const Home = () => {
           return (
             <GameCard
               key={uuidv4()}
-              {...game}
+              gameObj={game}
               existingGames={games}
               setGames={setGames}
               documentID={documentID}
               id={id}
+              setEditToggle={setEditToggle}
+              setEditObj={setEditObj}
             ></GameCard>
           );
         })}
@@ -117,6 +123,22 @@ export const Home = () => {
           className="bg-neutral-900 opacity-80 h-screen w-screen fixed top-0 left-0 cursor-pointer"
           onClick={() => setUsernameFormToggle(false)}
         ></div>
+      )}
+      {editToggle && (
+        <div
+          className="bg-neutral-900 opacity-80 h-screen w-screen fixed top-0 left-0 cursor-pointer !z-0"
+          onClick={() => setEditToggle(false)}
+        ></div>
+      )}
+      {editToggle && (
+        <EditGameForm
+          editGameObj={editObj}
+          existingGames={games}
+          setGames={setGames}
+          documentID={documentID}
+          setEditToggle={setEditToggle}
+          setEditGameObj={setEditObj}
+        />
       )}
       {formToggle && (
         <GameForm
