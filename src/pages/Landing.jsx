@@ -1,11 +1,18 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useLogin } from "../hooks/useLogin";
 import { Link } from "react-router-dom";
+import { Notify } from "../utilities/Notify";
 
 export const Landing = () => {
-  const { login } = useLogin();
+  const { login, errorMsg } = useLogin();
   const { userAuth } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (errorMsg === "Firebase: Error (auth/popup-blocked).") {
+      Notify("Sign in pop-up blocked");
+    }
+  }, [errorMsg]);
 
   return (
     <>
