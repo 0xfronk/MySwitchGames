@@ -44,18 +44,23 @@ export const EditGameForm = ({
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block mb-0.5 font-semibold">Status</label>
-                <select
-                  onChange={(e) =>
-                    setEditGameObj({ ...editGameObj, status: e.target.value })
-                  }
-                  value={editGameObj.status}
-                  className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
-                >
-                  <option value="Completed">Completed</option>
-                  <option value="Playing">Playing</option>
-                  <option value="On-Hold">On-Hold</option>
-                  <option value="Dropped">Dropped</option>
-                </select>
+                <div className="relative w-full">
+                  <span className="absolute right-2">
+                    <i className="arrow-down"></i>
+                  </span>
+                  <select
+                    onChange={(e) =>
+                      setEditGameObj({ ...editGameObj, status: e.target.value })
+                    }
+                    value={editGameObj.status}
+                    className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
+                  >
+                    <option value="Completed">Completed</option>
+                    <option value="Playing">Playing</option>
+                    <option value="On-Hold">On-Hold</option>
+                    <option value="Dropped">Dropped</option>
+                  </select>
+                </div>
                 <label className="block mb-0.5 font-semibold">Hours</label>
                 <input
                   type="text"
@@ -73,20 +78,25 @@ export const EditGameForm = ({
                 <label className="block mb-0.5 font-semibold">
                   Replayability
                 </label>
-                <select
-                  onChange={(e) =>
-                    setEditGameObj({
-                      ...editGameObj,
-                      replayability: e.target.value,
-                    })
-                  }
-                  value={editGameObj.replayability}
-                  className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
-                >
-                  <option value="High">High</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Low">Low</option>
-                </select>
+                <div className="relative w-full">
+                  <span className="absolute right-2">
+                    <i className="arrow-down"></i>
+                  </span>
+                  <select
+                    onChange={(e) =>
+                      setEditGameObj({
+                        ...editGameObj,
+                        replayability: e.target.value,
+                      })
+                    }
+                    value={editGameObj.replayability}
+                    className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
+                  >
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                  </select>
+                </div>
                 <label className="block mb-0.5 font-semibold">Rating</label>
                 <input
                   type="text"

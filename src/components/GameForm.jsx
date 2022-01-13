@@ -86,16 +86,21 @@ export const GameForm = ({
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="block mb-0.5 font-semibold">Status</label>
-            <select
-              onChange={(e) => setStatus(e.target.value)}
-              value={status}
-              className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
-            >
-              <option value="Completed">Completed</option>
-              <option value="Playing">Playing</option>
-              <option value="On-Hold">On-Hold</option>
-              <option value="Dropped">Dropped</option>
-            </select>
+            <div className="relative w-full">
+              <span className="absolute right-2">
+                <i className="arrow-down"></i>
+              </span>
+              <select
+                onChange={(e) => setStatus(e.target.value)}
+                value={status}
+                className="rounded-sm bg-background-950 mb-3 px-2 py-1 w-full"
+              >
+                <option value="Completed">Completed</option>
+                <option value="Playing">Playing</option>
+                <option value="On-Hold">On-Hold</option>
+                <option value="Dropped">Dropped</option>
+              </select>
+            </div>
             <label className="block mb-0.5 font-semibold">Hours</label>
             <input
               type="text"
@@ -109,15 +114,20 @@ export const GameForm = ({
           </div>
           <div>
             <label className="block mb-0.5 font-semibold">Replayability</label>
-            <select
-              onChange={(e) => setReplayability(e.target.value)}
-              value={replayability}
-              className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
-            >
-              <option value="High">High</option>
-              <option value="Medium">Medium</option>
-              <option value="Low">Low</option>
-            </select>
+            <div className="relative w-full">
+              <span className="absolute right-2">
+                <i className="arrow-down"></i>
+              </span>
+              <select
+                onChange={(e) => setReplayability(e.target.value)}
+                value={replayability}
+                className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
+              >
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
             <label className="block mb-0.5 font-semibold">Rating</label>
             <input
               type="text"
