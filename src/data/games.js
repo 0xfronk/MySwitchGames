@@ -323,4 +323,22 @@ export const gameData = [
       "https://target.scene7.com/is/image/Target/GUEST_9b98c97e-86ee-4b24-9355-2b3f4cba9f6c",
     genre: "Party",
   },
+  {
+    title: "Super Mario 3D World + Bowser's Fury",
+    img_url:
+      "https://target.scene7.com/is/image/Target/GUEST_c2398e9b-9045-4caa-96f7-6b0c81ac185d",
+    genre: "Action",
+  },
+  {
+    title: "New Pokemon Snap",
+    img_url:
+      "https://target.scene7.com/is/image/Target/GUEST_cb485122-7c20-4432-87bf-e5d09f10bcff",
+    genre: "Simulation",
+  },
+  {
+    title: "Donkey Kong Country: Tropical Freeze",
+    img_url:
+      "https://target.scene7.com/is/image/Target/GUEST_bd05b236-b56b-40db-8b3a-91076089bc9c",
+    genre: "Action",
+  },
 ];
