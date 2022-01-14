@@ -1,15 +1,22 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserSearchBar } from "../components/UserSearchBar";
 import { useLogin } from "../hooks/useLogin";
 import { useLogout } from "../hooks/useLogout";
 import { AuthContext } from "../context/AuthContext";
 import { FaGoogle } from "react-icons/fa";
+import { Notify } from "../utilities/Notify";
 
 export const Navbar = () => {
   const { userAuth } = useContext(AuthContext);
-  const { login } = useLogin();
+  const { login, errorMsg } = useLogin();
   const { logout } = useLogout();
+
+  useEffect(() => {
+    if (errorMsg === "Firebase: Error (auth/popup-blocked).") {
+      Notify("Sign in pop-up blocked");
+    }
+  }, [errorMsg]);
 
   return (
     <nav className="w-full h-28 xs:h-32 mdlg:h-20 mdlg:pt-0 pt-2 bg-background-900 flex items-center flex-wrap">
