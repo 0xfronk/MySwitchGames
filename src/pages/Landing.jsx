@@ -29,7 +29,7 @@ export const Landing = () => {
           <Link to="/gamelist/demo">
             <button
               type="button"
-              className="bg-neutral-200 text-sm xs:text-lg text-neutral-800 px-6 h-10 xs:px-8 xs:h-12 font-semibold rounded-md flex justify-center items-center mr-5"
+              className="bg-neutral-200 text-xs xxs:text-sm xs:text-lg text-neutral-800 px-6 h-10 xs:px-8 xs:h-12 font-semibold rounded-md flex justify-center items-center mr-5"
             >
               View Demo
             </button>
@@ -38,7 +38,7 @@ export const Landing = () => {
             <Link to={`/gamelist/${userAuth.curr_user.uid}`}>
               <button
                 type="button"
-                className="bg-buttonbg-900 text-sm xs:text-lg text-neutral-50 px-6 h-10 xs:px-8 xs:h-12 font-semibold rounded-md flex justify-center items-center"
+                className="bg-buttonbg-900 text-xs xxs:text-sm xs:text-lg text-neutral-50 px-6 h-10 xs:px-8 xs:h-12 font-semibold rounded-md flex justify-center items-center"
               >
                 Get Started
               </button>
@@ -47,7 +47,7 @@ export const Landing = () => {
             <button
               type="button"
               onClick={login}
-              className="bg-buttonbg-900 text-sm xs:text-lg text-neutral-50 px-6 h-10 xs:px-8 xs:h-12 font-semibold rounded-md flex justify-center items-center"
+              className="bg-buttonbg-900 text-xs xxs:text-sm xs:text-lg text-neutral-50 px-6 h-10 xs:px-8 xs:h-12 font-semibold rounded-md flex justify-center items-center"
             >
               Get Started
             </button>

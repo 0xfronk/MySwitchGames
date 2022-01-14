@@ -31,9 +31,9 @@ export const Navbar = () => {
         <>
           <button
             onClick={login}
-            className="bg-buttonbg-900 text-neutral-50 px-4 h-8 xxs:px-4 xxs:h-9 text-xs xs:text-base xs:px-8 xs:h-12 font-medium rounded-md flex justify-center items-center ml-auto md:order-2 order-1"
+            className="bg-buttonbg-900 text-neutral-50 px-4 h-8 xxs:px-5 xxs:h-9 text-xs xs:text-base xs:px-8 xs:h-12 font-medium rounded-md flex justify-center items-center ml-auto md:order-2 order-1"
           >
-            <FaGoogle className="inline-block mr-3 google-icon" />
+            <FaGoogle className="inline-block mr-1 xs:mr-3 google-icon" />
             Sign In
           </button>
         </>
@@ -43,7 +43,7 @@ export const Navbar = () => {
           <Link to="/" className="ml-auto md:order-2 order-1">
             <button
               onClick={logout}
-              className="bg-buttonbg-900 text-neutral-50 px-4 h-8 xxs:px-6 xxs:h-9 text-xs xs:text-base xs:px-8 xs:h-12 font-medium rounded-md flex justify-center items-center "
+              className="bg-buttonbg-900 text-neutral-50 px-4 h-8 xxs:px-5 xxs:h-9 text-xs xs:text-base xs:px-8 xs:h-12 font-medium rounded-md flex justify-center items-center "
             >
               Sign Out
             </button>
