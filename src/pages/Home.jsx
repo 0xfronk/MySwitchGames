@@ -75,7 +75,7 @@ export const Home = () => {
     <div className="w-10/12 xs:w-4/5 max-w-7xl m-auto">
       <Navbar />
       {username !== "" && (
-        <h1 className="text-neutral-50 text-lg xs:text-xl font-bold">
+        <h1 className="text-neutral-50 text-md xxs:text-lg xs:text-xl font-bold">
           {username}'s Game List
         </h1>
       )}

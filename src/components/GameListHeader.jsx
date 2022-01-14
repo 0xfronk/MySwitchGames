@@ -19,7 +19,7 @@ export const GameListHeader = ({
   }
 
   return (
-    <div className="flex w-full mb-5 items-center text-neutral-50 text-md xs:text-lg mr-1">
+    <div className="flex w-full mb-5 items-center text-neutral-50 text-sm xxs:text-md xs:text-lg">
       {amount === 1 ? (
         <h3>
           <span className="font-bold">{amount}</span> game played &nbsp;{"   "}
@@ -32,7 +32,7 @@ export const GameListHeader = ({
         </h3>
       )}
       {browsing_id === id && (
-        <div className="flex ml-auto items-center settings-icon">
+        <div className="flex ml-auto items-center settings-icon pl-2 sm:pl-0">
           <AiOutlineSetting
             className="cursor-pointer mr-5"
             fill={"#EEEEEE"}
