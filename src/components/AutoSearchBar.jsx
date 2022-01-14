@@ -37,7 +37,7 @@ export const AutoSearchBar = ({ title, setTitle }) => {
           <MdOutlineClose
             size={20}
             fill={"#EEEEEE"}
-            className="-ml-7 cursor-pointer"
+            className="-ml-7 cursor-pointer z-10"
             onClick={() => {
               setSearchFilteredData([]);
               setTitle("");
