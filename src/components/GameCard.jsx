@@ -58,7 +58,7 @@ export const GameCard = ({
           alt="Game cover"
           className="h-game w-game object-cover rounded-lg"
         />
-        <div className="bg-zinc-700 bg-opacity-70 absolute h-40 w-full bottom-0 z-100 rounded-b-lg overflow-scroll leading-5 text-left px-2 py-2">
+        <div className="bg-zinc-700 bg-opacity-70 absolute h-40 w-full bottom-0 z-100 rounded-b-lg leading-5 text-left px-2 py-2">
           <h1 className="text-lg text-neutral-50 font-bold leading-5 pb-1">
             {gameObj.title}
           </h1>
