@@ -3,6 +3,17 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 select {
   -moz-appearance: none;
   -webkit-appearance: none;
