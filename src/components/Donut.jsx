@@ -4,7 +4,7 @@ import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement, Legend, Tooltip);
 
 export const Donut = ({ games }) => {
-  const occurences = [0, 0, 0, 0, 0, 0, 0, 0];
+  const occurences = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   games.forEach((game) => {
     switch (game.genre) {
       case "Action":
@@ -22,14 +22,17 @@ export const Donut = ({ games }) => {
       case "Party":
         occurences[4] += 1;
         break;
-      case "RPG":
+      case "Puzzle":
         occurences[5] += 1;
         break;
-      case "Simulation":
+      case "RPG":
         occurences[6] += 1;
         break;
-      case "Sports & racing":
+      case "Simulation":
         occurences[7] += 1;
+        break;
+      case "Sports & racing":
+        occurences[8] += 1;
         break;
       default:
     }
@@ -70,6 +73,7 @@ export const Donut = ({ games }) => {
           "Education",
           "Music & fitness",
           "Party",
+          "Puzzle",
           "RPG",
           "Simulation",
           "Sports & racing",
@@ -83,6 +87,7 @@ export const Donut = ({ games }) => {
               "rgba(54, 162, 235, 0.2)",
               "rgba(255, 206, 86, 0.2)",
               "rgba(75, 192, 192, 0.2)",
+              "rgba(56, 199, 88, 0.2)",
               "rgba(153, 102, 255, 0.2)",
               "rgba(255, 159, 64, 0.2)",
               "rgba(108, 108, 108, 0.2)",
@@ -93,6 +98,7 @@ export const Donut = ({ games }) => {
               "rgba(54, 162, 235, 1)",
               "rgba(255, 206, 86, 1)",
               "rgba(75, 192, 192, 1)",
+              "rgba(56, 199, 88, 1)",
               "rgba(153, 102, 255, 1)",
               "rgba(255, 159, 64, 1)",
               "rgba(108, 108, 108, 1)",

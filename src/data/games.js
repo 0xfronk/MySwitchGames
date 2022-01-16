@@ -341,4 +341,69 @@ export const gameData = [
       "https://target.scene7.com/is/image/Target/GUEST_bd05b236-b56b-40db-8b3a-91076089bc9c",
     genre: "Action",
   },
+  {
+    title: "Tetris 99",
+    img_url: "https://m.media-amazon.com/images/I/71PISGIUjVL._SY500_.jpg",
+    genre: "Puzzle",
+  },
+  {
+    title: "Super Street Racer",
+    img_url: "https://m.media-amazon.com/images/I/815ZObU8DyL._AC_UY218_.jpg",
+    genre: "Sports & racing",
+  },
+  {
+    title: "WarioWare: Get It Together!",
+    img_url: "https://m.media-amazon.com/images/I/91DqNmbDB+S._SY500_.jpg",
+    genre: "Party",
+  },
+  {
+    title: "The Last Kids on Earth and the Staff of Doom",
+    img_url: "https://m.media-amazon.com/images/I/51Hs1oSTW-L._AC_SY580_.jpg",
+    genre: "RPG",
+  },
+  {
+    title: "Ultra Street Fighter II: The Final Challengers",
+    img_url: "https://m.media-amazon.com/images/I/51ACpxuMGpL._AC_SY580_.jpg",
+    genre: "Action",
+  },
+  {
+    title: "Knockout Home Fitness",
+    img_url: "https://m.media-amazon.com/images/I/81vC7bzjIQL._SY445_.jpg",
+    genre: "Music & fitness",
+  },
+  {
+    title: "Mario Tennis Aces",
+    img_url: "https://m.media-amazon.com/images/I/616fPJlm4bL._AC_SY580_.jpg",
+    genre: "Sports & racing",
+  },
+  {
+    title: "Little Friends: Dogs & Cats",
+    img_url: "https://m.media-amazon.com/images/I/51zumrk4YjL._AC_SY580_.jpg",
+    genre: "Simulation",
+  },
+  {
+    title: "Crysis Remastered",
+    img_url: "https://m.media-amazon.com/images/I/51e1-BFEvrL._AC_SY780_.jpg",
+    genre: "Action",
+  },
+  {
+    title: "ARK: Survival Evolved",
+    img_url: "https://m.media-amazon.com/images/I/91E6+gDvo5L._SY445_.jpg",
+    genre: "Adventure",
+  },
+  {
+    title: "Ori: The Collection",
+    img_url: "https://m.media-amazon.com/images/I/71JyoiGjklL._SY445_.jpg",
+    genre: "Action",
+  },
+  {
+    title: "Doki Doki Literature Club Plus!",
+    img_url: "https://m.media-amazon.com/images/I/716ys9lymzL._SY445_.jpg",
+    genre: "RPG",
+  },
+  {
+    title: "Big Brain Academy: Brain vs. Brain",
+    img_url: "https://m.media-amazon.com/images/I/71Jodyzt1AL._SY445_.jpg",
+    genre: "Puzzle",
+  },
 ];
