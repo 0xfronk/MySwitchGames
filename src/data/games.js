@@ -348,7 +348,7 @@ export const gameData = [
   },
   {
     title: "Super Street Racer",
-    img_url: "https://m.media-amazon.com/images/I/815ZObU8DyL._AC_UY218_.jpg",
+    img_url: "https://m.media-amazon.com/images/I/41eKer9sSQL._AC_SY780_.jpg",
     genre: "Sports & racing",
   },
   {
@@ -404,6 +404,51 @@ export const gameData = [
   {
     title: "Big Brain Academy: Brain vs. Brain",
     img_url: "https://m.media-amazon.com/images/I/71Jodyzt1AL._SY445_.jpg",
+    genre: "Puzzle",
+  },
+  {
+    title: "Monster Hunter Rise",
+    img_url: "https://m.media-amazon.com/images/I/919jkWMm4nL._SY445_.jpg",
+    genre: "Action",
+  },
+  {
+    title: "Monster Hunter Stories 2: Wings of Ruin",
+    img_url: "https://m.media-amazon.com/images/I/51GyoLtnKNS._AC_SY780_.jpg",
+    genre: "RPG",
+  },
+  {
+    title: "Steamworld Dig 2",
+    img_url: "https://m.media-amazon.com/images/I/51-ghxRVEYL._AC_SY780_.jpg",
+    genre: "Action",
+  },
+  {
+    title: "Dragon Ball FighterZ",
+    img_url: "https://m.media-amazon.com/images/I/51UH378ooyL._AC_SY580_.jpg",
+    genre: "Action",
+  },
+  {
+    title: "Dr Kawashima's Brain Training",
+    img_url: "https://m.media-amazon.com/images/I/51GpxuwAeAL._AC_SY580_.jpg",
+    genre: "Education",
+  },
+  {
+    title: "1-2-Switch",
+    img_url: "https://m.media-amazon.com/images/I/51awct7mMPL._AC_SY580_.jpg",
+    genre: "Party",
+  },
+  {
+    title: "ARMS",
+    img_url: "https://m.media-amazon.com/images/I/51iw-raUZcS._AC_SY580_.jpg",
+    genre: "Action",
+  },
+  {
+    title: "Xenoblade Chronicles 2",
+    img_url: "https://m.media-amazon.com/images/I/51YetZ+zYuL._AC_SY580_.jpg",
+    genre: "RPG",
+  },
+  {
+    title: "Captain Toad: Treasure Tracker",
+    img_url: "https://m.media-amazon.com/images/I/51sHU9rTUtL._AC_SY580_.jpg",
     genre: "Puzzle",
   },
 ];
