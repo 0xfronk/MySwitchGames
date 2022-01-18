@@ -38,7 +38,7 @@ export const GameCard = React.memo(
 
     return (
       <>
-        <div className="rounded-lg h-game w-game relative mb-5 inline-block game-card">
+        <div className="rounded-lg h-game w-game relative mb-5 inline-block game-card transition-all">
           {browsing_id === id && (
             <div className="bg-zinc-700 bg-opacity-90 absolute h-10 w-full z-100 rounded-t-md delete-card hidden">
               <p
