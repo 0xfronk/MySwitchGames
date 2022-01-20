@@ -9,8 +9,7 @@ export const GameForm = ({
   existingGames,
   documentID,
   setGames,
-  setFormToggles,
-  formToggles,
+  setAddToggle,
 }) => {
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState("Completed");
@@ -59,7 +58,7 @@ export const GameForm = ({
         setFormHours("");
         setReplayability("High");
         setRating("");
-        setFormToggles({ ...formToggles, addToggle: false });
+        setAddToggle(false);
       } else {
         setTitle("");
         setStatus("Completed");
@@ -79,7 +78,7 @@ export const GameForm = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-background-1000 h-auto max-w-xl rounded-lg flex flex-col px-4 py-4 xs:px-8 xs:py-8 text-neutral-50 justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10/12 xs:w-4/5 md:w-fit"
+      className="bg-background-1000 h-auto max-w-xl rounded-lg flex flex-col px-4 py-4 xs:px-8 xs:py-8 text-neutral-50 justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10/12 xs:w-4/5 md:w-fit z-50"
     >
       <div>
         <AutoSearchBar title={title} setTitle={setTitle} />

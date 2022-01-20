@@ -3,29 +3,28 @@ import { doc, updateDoc } from "firebase/firestore";
 import { Notify } from "../utilities/Notify";
 
 export const EditGameForm = ({
-  editGameObj,
-  setEditGameObj,
+  editObj,
+  setEditObj,
   existingGames,
   setGames,
   documentID,
-  setFormToggles,
-  formToggles,
+  setEditToggle,
 }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     existingGames[
-      existingGames.findIndex((game) => game.title === editGameObj.title)
-    ] = editGameObj;
+      existingGames.findIndex((game) => game.title === editObj.title)
+    ] = editObj;
     await updateDoc(doc(db, "game_list", `${documentID}`), {
       game_objs: existingGames,
     });
     Notify("Game stats updated");
+    setEditToggle(false);
     setGames(existingGames);
-    setFormToggles({ ...formToggles, editToggle: false });
   };
   return (
     <>
-      {editGameObj && (
+      {editObj && (
         <form
           onSubmit={handleSubmit}
           className="bg-background-1000 h-auto max-w-xl rounded-lg flex flex-col px-4 py-4 xs:px-8 xs:py-8 text-neutral-50 justify-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10/12 xs:w-4/5 md:w-fit"
@@ -37,7 +36,7 @@ export const EditGameForm = ({
                 type="text"
                 readOnly
                 required
-                value={editGameObj.title}
+                value={editObj.title}
                 className="rounded-t-sm bg-background-950 px-2 py-1 focus:outline-none w-full mb-3"
               />
             </div>
@@ -50,9 +49,9 @@ export const EditGameForm = ({
                   </span>
                   <select
                     onChange={(e) =>
-                      setEditGameObj({ ...editGameObj, status: e.target.value })
+                      setEditObj({ ...editObj, status: e.target.value })
                     }
-                    value={editGameObj.status}
+                    value={editObj.status}
                     className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
                   >
                     <option value="Completed">Completed</option>
@@ -66,11 +65,11 @@ export const EditGameForm = ({
                   type="text"
                   required
                   pattern="^[0-9]{0,6}$"
-                  value={editGameObj.hours}
+                  value={editObj.hours}
                   placeholder="In-game hours"
                   className="rounded-sm bg-background-950 mb-3 px-2 py-1 w-full focus:outline-none "
                   onChange={(e) =>
-                    setEditGameObj({ ...editGameObj, hours: e.target.value })
+                    setEditObj({ ...editObj, hours: e.target.value })
                   }
                 />
               </div>
@@ -84,12 +83,12 @@ export const EditGameForm = ({
                   </span>
                   <select
                     onChange={(e) =>
-                      setEditGameObj({
-                        ...editGameObj,
+                      setEditObj({
+                        ...editObj,
                         replayability: e.target.value,
                       })
                     }
-                    value={editGameObj.replayability}
+                    value={editObj.replayability}
                     className="rounded-sm bg-background-950 mb-3 px-2 py-1  w-full"
                   >
                     <option value="High">High</option>
@@ -102,11 +101,11 @@ export const EditGameForm = ({
                   type="text"
                   required
                   pattern="\d{0,1}(?:\.\d)|10|\d?$"
-                  value={editGameObj.rating}
+                  value={editObj.rating}
                   placeholder="Score out of 10"
                   className="rounded-sm bg-background-950 mb-3 px-2 py-1 w-full focus:outline-none "
                   onChange={(e) =>
-                    setEditGameObj({ ...editGameObj, rating: e.target.value })
+                    setEditObj({ ...editObj, rating: e.target.value })
                   }
                 />
               </div>

@@ -1,31 +1,21 @@
 import { useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar";
 import { GameListHeader } from "../components/GameListHeader";
-import { GameForm } from "../components/GameForm";
-import { GameCard } from "../components/GameCard";
-import { EditGameForm } from "../components/EditGameForm";
+import { GameCardContainer } from "../components/GameCardContainer";
 import { Donut } from "../components/Donut";
-import { UsernameModal } from "../components/UsernameModal";
 import spinner from "../assets/loading.svg";
 import { db } from "../firebase/config";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { useParams, useNavigate } from "react-router-dom";
 import { Notify } from "../utilities/Notify";
-import { v4 as uuidv4 } from "uuid";
 
 export const Home = () => {
   const [games, setGames] = useState([]);
   const [amount, setAmount] = useState(0);
   const [hours, setHours] = useState(0);
-  const [formToggles, setFormToggles] = useState({
-    addToggle: false,
-    editToggle: false,
-    usernameToggle: false,
-  });
   const [documentID, setDocumentID] = useState([]);
   const [username, setUsername] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [editObj, setEditObj] = useState({});
 
   const { id } = useParams();
   const Navigate = useNavigate();
@@ -82,27 +72,18 @@ export const Home = () => {
       <GameListHeader
         amount={amount}
         hours={hours}
-        setFormToggles={setFormToggles}
-        formToggles={formToggles}
+        existingGames={games}
+        setGames={setGames}
         id={id}
         documentID={documentID}
       />
       <div className="custom-grid">
-        {games.map((game) => {
-          return (
-            <GameCard
-              key={uuidv4()}
-              gameObj={game}
-              existingGames={games}
-              setGames={setGames}
-              documentID={documentID}
-              id={id}
-              setFormToggles={setFormToggles}
-              formToggles={formToggles}
-              setEditObj={setEditObj}
-            ></GameCard>
-          );
-        })}
+        <GameCardContainer
+          games={games}
+          setGames={setGames}
+          documentID={documentID}
+          id={id}
+        />
       </div>
       {games.length > 0 && (
         <div>
@@ -113,53 +94,6 @@ export const Home = () => {
             <Donut games={games} />
           </div>
         </div>
-      )}
-      {formToggles.addToggle && (
-        <div
-          className="bg-neutral-900 opacity-80 h-screen w-screen fixed top-0 left-0 cursor-pointer"
-          onClick={() => setFormToggles({ ...formToggles, addToggle: false })}
-        ></div>
-      )}
-      {formToggles.usernameToggle && (
-        <div
-          className="bg-neutral-900 opacity-80 h-screen w-screen fixed top-0 left-0 cursor-pointer"
-          onClick={() =>
-            setFormToggles({ ...formToggles, usernameToggle: false })
-          }
-        ></div>
-      )}
-      {formToggles.editToggle && (
-        <div
-          className="bg-neutral-900 opacity-80 h-screen w-screen fixed top-0 left-0 cursor-pointer !z-0"
-          onClick={() => setFormToggles({ ...formToggles, editToggle: false })}
-        ></div>
-      )}
-      {formToggles.editToggle && (
-        <EditGameForm
-          editGameObj={editObj}
-          existingGames={games}
-          setGames={setGames}
-          documentID={documentID}
-          setFormToggles={setFormToggles}
-          formToggles={formToggles}
-          setEditGameObj={setEditObj}
-        />
-      )}
-      {formToggles.addToggle && (
-        <GameForm
-          existingGames={games}
-          documentID={documentID}
-          setGames={setGames}
-          setFormToggles={setFormToggles}
-          formToggles={formToggles}
-        />
-      )}
-      {formToggles.usernameToggle && (
-        <UsernameModal
-          setFormToggles={setFormToggles}
-          formToggles={formToggles}
-          documentID={documentID}
-        />
       )}
     </div>
   );

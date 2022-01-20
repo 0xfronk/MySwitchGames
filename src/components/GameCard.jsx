@@ -11,9 +11,8 @@ export const GameCard = React.memo(
     setGames,
     documentID,
     id,
-    setFormToggles,
-    formToggles,
     setEditObj,
+    setEditToggle,
   }) => {
     const { userAuth } = useContext(AuthContext);
     let browsing_id = "";
@@ -33,14 +32,14 @@ export const GameCard = React.memo(
     };
     const handleGameEdit = (currentGame) => {
       setEditObj({ ...currentGame });
-      setFormToggles({ ...formToggles, editToggle: true });
+      setEditToggle(true);
     };
 
     return (
       <>
         <div className="rounded-lg h-game w-game relative mb-5 inline-block game-card transition-all">
           {browsing_id === id && (
-            <div className="bg-zinc-700 bg-opacity-90 absolute h-10 w-full z-100 rounded-t-md delete-card hidden">
+            <div className="bg-zinc-700 bg-opacity-90 absolute h-10 w-full rounded-t-md delete-card hidden">
               <p
                 className="text-sky-500 absolute font-semibold top-2 left-3 cursor-pointer"
                 onClick={() => handleGameEdit(gameObj)}
@@ -60,7 +59,7 @@ export const GameCard = React.memo(
             alt="Game cover"
             className="h-game w-game object-cover rounded-lg"
           />
-          <div className="bg-zinc-700 bg-opacity-70 absolute h-40 w-full bottom-0 z-100 rounded-b-lg leading-5 text-left px-2 py-2">
+          <div className="bg-zinc-700 bg-opacity-70 absolute h-40 w-full bottom-0 rounded-b-lg leading-5 text-left px-2 py-2">
             <h1 className="text-lg text-neutral-50 font-bold leading-5 pb-1">
               {gameObj.title}
             </h1>

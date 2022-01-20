@@ -10,7 +10,7 @@ import {
 import { db } from "../firebase/config";
 import { Notify } from "../utilities/Notify";
 
-export const UsernameModal = ({ setFormToggles, formToggles, documentID }) => {
+export const UsernameModal = ({ setUsernameToggle, documentID }) => {
   const [formUsername, setFormUsername] = useState("");
 
   const handleSubmit = async (e) => {
@@ -29,8 +29,8 @@ export const UsernameModal = ({ setFormToggles, formToggles, documentID }) => {
         username: formUsername,
       });
       Notify("Updated username");
-      setFormToggles({ ...formToggles, usernameToggle: false });
       setFormUsername("");
+      setUsernameToggle(false);
     } else {
       Notify("This username is taken");
       setFormUsername("");
@@ -39,7 +39,7 @@ export const UsernameModal = ({ setFormToggles, formToggles, documentID }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-background-1000 h-auto w-10/12 xs:w-4/5 max-w-xl rounded-lg overflow-scroll flex flex-col px-4 py-4 xs:px-8 xs:py-8 text-neutral-50 justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      className="bg-background-1000 h-auto w-10/12 xs:w-4/5 max-w-xl rounded-lg overflow-scroll flex flex-col px-4 py-4 xs:px-8 xs:py-8 text-neutral-50 justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50"
     >
       <label className="block mb-0.5 font-semibold text-xl">New Username</label>
       <input
