@@ -83,7 +83,7 @@ i {
   }
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 519px) {
   .google-icon {
     font-size: 10px;
   }
