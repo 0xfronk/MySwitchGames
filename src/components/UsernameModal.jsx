@@ -15,11 +15,11 @@ export const UsernameModal = ({ setUsernameToggle, documentID }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const q = query(
+    const userQuery = query(
       collection(db, "game_list"),
       where("username", "==", formUsername)
     );
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(userQuery);
     let count = 0;
     querySnapshot.forEach((doc) => {
       count += 1;

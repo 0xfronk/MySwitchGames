@@ -22,11 +22,11 @@ export const Home = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    const q = query(
+    const userQuery = query(
       collection(db, "game_list"),
       where("user_id", "==", `${id}`)
     );
-    const unsub = onSnapshot(q, (qSnapshot) => {
+    const unsub = onSnapshot(userQuery, (qSnapshot) => {
       const game_list = [];
       const doc_id = [];
       qSnapshot.forEach((doc) => {

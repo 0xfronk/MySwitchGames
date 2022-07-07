@@ -10,11 +10,11 @@ export const UserSearchBar = () => {
 
   const searchHandler = async (e) => {
     e.preventDefault();
-    const q = query(
+    const userQuery = query(
       collection(db, "game_list"),
       where("username", "==", searchUser.toLowerCase())
     );
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(userQuery);
     const user_list = [];
     querySnapshot.forEach((doc) => {
       user_list.push(doc.data());

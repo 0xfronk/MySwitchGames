@@ -473,4 +473,22 @@ export const gameData = [
       "https://firebasestorage.googleapis.com/v0/b/myswitchgames.appspot.com/o/images%2Fcaptain_toad.png?alt=media&token=1ad5ad3f-3771-4278-a2f0-0c58ea19bab0",
     genre: "Puzzle",
   },
+  {
+    title: "Xenoblade Chronicles 3",
+    img_url:
+      "https://firebasestorage.googleapis.com/v0/b/myswitchgames.appspot.com/o/images%2Fxenoblade_3.png?alt=media&token=350f593a-d08a-44ea-b752-50f246a04979",
+    genre: "RPG",
+  },
+  {
+    title: "Kirby and the Forgotten Land",
+    img_url:
+      "https://firebasestorage.googleapis.com/v0/b/myswitchgames.appspot.com/o/images%2Fkirby_forgotten.png?alt=media&token=4fa61ef1-dc83-4cce-b66f-0cce79f8c3af",
+    genre: "Action",
+  },
+  {
+    title: "Mario Strikers: Battle League",
+    img_url:
+      "https://firebasestorage.googleapis.com/v0/b/myswitchgames.appspot.com/o/images%2Fmario_strikers.png?alt=media&token=246c8971-75d3-43c4-8756-d0869204bd95",
+    genre: "Sports & racing",
+  },
 ];
